@@ -1,88 +1,85 @@
-# 🏎️ Forza Horizon 4 / 5 / 6 & Motorsport Telemetry Dashboard
+# 🏎️ Forza Horizon 6 · Wireless Mobile Telemetry Dashboard
 
-A real-time, low-latency **60Hz UDP Telemetry Dashboard & Digital Cockpit** designed for **Forza Horizon 4 / 5 / 6** and **Forza Motorsport** (Next-Gen ready).
+> **Turn your smartphone or tablet into an ultra-responsive, real-time 60Hz wireless racing dashboard for Forza Horizon 6.**
 
-It reads raw UDP telemetry data packets transmitted by the game, processes vehicle physics and engine metrics in real-time, and streams them via WebSockets to an ultra-responsive web dashboard optimized for mobile phones, tablets, and secondary monitors.
+A zero-install, browser-based digital cockpit that reads 60Hz UDP telemetry packets directly from **Forza Horizon 6** and streams them with sub-millisecond latency to your mobile screen via WebSockets.
 
 ---
 
 <div align="center">
-  <img src="screenshot.png" alt="Forza Telemetry Dashboard Preview" width="100%" />
+  <img src="screenshot.png" alt="Forza Horizon 6 Mobile Telemetry Dashboard Preview" width="100%" />
 </div>
 
 ---
 
-## ✨ Features
+## 📱 Mobile-First Cockpit Features
 
-- 🚥 **16-Stage F1 / GT3 LED Shift Lights:** Color-coded shift indicator (Green ➔ Amber ➔ Red ➔ Blue) with high-intensity strobe flash at redline.
-- ⚡ **Real-Time Digital Instrument Cluster:**
-  - Precision Digital Speedometer (km/h)
-  - Giant Sequential Gear Display (R / N / 1–6+)
-  - Engine Tachometer (RPM & Redline Warning)
-  - Throttle, Brake, and Clutch input pressure bars
-  - Real-time Turbo Boost gauge (PSI)
-  - **4-Wheel Independent Tire Temperature Heatmap** (°C with dynamic cold/optimal/hot color scaling)
-- 📳 **Haptic Feedback:** Vibrates mobile devices when reaching optimal shift points.
-- 📱 **Screen Wake Lock:** Prevents phone or tablet screens from dimming or locking during races.
-- 🖥️ **Full-Screen Cockpit Mode:** One-tap toggle for an immersive standalone display.
-- 🔄 **Built-in 60Hz Physics Simulator:** Test and demo the entire cockpit without launching the game.
-- 🏁 **Next-Gen Compatible:** Built strictly adhering to the standard Forza Data Out UDP protocol (FH4, FH5, FH6 & FM).
+- 🚥 **16-Stage F1 / GT3 LED Shift Lights:** Color-coded shift LEDs (Green ➔ Amber ➔ Red ➔ Blue) with high-intensity strobe flashing at the redline.
+- 📳 **Haptic Shift Vibration:** Your phone vibrates the moment you hit the optimal gear shift RPM.
+- 💡 **Automatic Screen Wake Lock:** Keeps your phone/tablet screen ON continuously during races (no screen sleep/dimming).
+- ⛶ **One-Tap Fullscreen:** Double-tap or press fullscreen to hide browser bars and get a clean sim-rig display.
+- ⚡ **Precision Real-Time Telemetry:**
+  - Digital Speedometer (km/h)
+  - Giant Gear Display (R / N / 1–6+)
+  - Engine Tachometer (RPM & Limiter)
+  - Responsive Throttle, Brake, and Clutch pressure gauges
+  - Turbo Boost gauge (PSI)
+  - **4-Wheel Independent Tire Heatmap** (°C with Cold/Optimal/Hot color indicators)
+- 🧪 **Built-in 60Hz Simulator:** Test and demonstrate the full dashboard on your phone without even launching the game!
 
 ---
 
-## 🚀 Quick Start
+## 📖 Step-by-Step Setup Guide (Super Easy / 3 Steps)
 
-### 1. Prerequisites
-- [Node.js](https://nodejs.org/) (v16.0.0 or later)
-- Forza Horizon 4 / 5 / 6 or Forza Motorsport
+Follow these simple steps to get your mobile dashboard running in under 2 minutes:
 
-### 2. Installation
+### 🛠️ Step 1: Start the Dashboard on your PC
+Make sure you have [Node.js](https://nodejs.org/) installed, open your terminal inside the project folder and run:
 ```bash
-git clone https://github.com/emiukob/Forza_Telemetry_Dashboard.git
-cd Forza_Telemetry_Dashboard
 npm install
-```
-
-### 3. Launch Server
-```bash
 npm start
 ```
 
-> The server will automatically detect your local IP address and print a **QR Code** directly in your terminal. Scan the QR code with your smartphone camera or navigate to `http://<YOUR_LOCAL_IP>:8080` in any web browser.
+---
+
+### 📱 Step 2: Open the Dashboard on your Phone
+1. Ensure your phone and PC are connected to the **same Wi-Fi network**.
+2. Look at your PC terminal — it will display a **QR code** and a local web link (e.g. `http://192.168.1.xxx:8080`).
+3. **Open your phone's camera, scan the QR code**, and tap the link to open the dashboard!
+4. Tap **"⛶ FULLSCREEN"** on your phone screen.
 
 ---
 
-## ⚙️ In-Game Configuration (Forza)
-
-1. Launch **Forza Horizon (4 / 5 / 6)** or **Forza Motorsport**.
-2. Navigate to **Settings > HUD and Gameplay**.
-3. Scroll down to the bottom and configure the following:
-   - **Data Out:** `ON`
-   - **Data Out IP Address:** `Your PC's Local IP` *(e.g., 192.168.1.xxx)* or `127.0.0.1` (if running on the same machine)
-   - **Data Out IP Port:** `5300`
-4. Save settings and start driving!
+### 🎮 Step 3: Configure Forza Horizon 6 In-Game
+1. Launch **Forza Horizon 6** on your PC or Xbox.
+2. Go to: **Settings ➔ HUD and Gameplay** (Ayarlar ➔ HUD ve Oynanış).
+3. Scroll down to the very bottom:
+   - **Data Out (Veri Çıkışı):** Set to `ON` (AÇIK)
+   - **Data Out IP Address (IP Adresi):** Enter your PC's IP address shown in the terminal *(e.g. `192.168.1.xxx` or `127.0.0.1` if playing on the same PC)*
+   - **Data Out IP Port (Port):** `5300`
+4. Save settings and start driving — **your phone will instantly light up and display real-time telemetry!** 🏎️💨
 
 ---
 
-## 🧪 Testing Without the Game (Built-in Simulator)
+## 🧪 Testing Without the Game (Demo Simulator)
 
-You can run the standalone 60Hz physics telemetry simulator to test and demo the dashboard anytime:
+Want to test your phone screen without starting Forza?
+Simply run the standalone 60Hz vehicle physics simulator on your PC:
 
 ```bash
 npm run sim
 ```
-
-This generates realistic telemetry packets (acceleration runs, gear shifts, braking heat buildup, boost curves) and broadcasts them directly to the server.
+Or simply tap the **"⚡ DEMO MODE"** button directly on your phone screen!
 
 ---
 
-## 🛠️ Architecture & Tech Stack
+## 🛠️ Tech Stack & Architecture
 
-- **Backend:** Node.js, `dgram` (UDP 60Hz Socket), `ws` (WebSocket Server), `http`, `qrcode`
-- **Frontend:** Vanilla HTML5, CSS3 (Hardware-accelerated CSS Animations), JavaScript (WebSocket Client, Screen WakeLock API, Vibration API)
-- **Protocol:** Forza Data Out Dash Format (324-byte UDP structure)
+- **Backend:** Node.js, `dgram` (UDP 60Hz Socket Listener), `ws` (WebSocket Server), `qrcode`
+- **Frontend / Mobile Client:** Vanilla HTML5, CSS3 Grid/Flexbox, JavaScript (WebSockets, Screen Wake Lock API, Web Vibration API)
+- **Telemetry Protocol:** 324-byte Forza UDP Data Out (Dash Format)
 
 ---
 
 ## 📄 License
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the MIT License. Built for Forza Horizon 6 racers & sim-rig enthusiasts.
