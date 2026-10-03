@@ -8,14 +8,14 @@ const QRCode = require('qrcode');
 
 // Ports
 const UDP_PORT = 5300;   // Forza sends telemetry here
-const HTTP_PORT = 8080;  // Phone connects here
+const HTTP_PORT = 8080;  // Devices connect to dashboard here
 
 // Detect local IPv4 address
 function getLocalIP() {
     const interfaces = os.networkInterfaces();
     for (const name of Object.keys(interfaces)) {
         for (const iface of interfaces[name]) {
-            if (iface.family === 'IPv4' && !iface.internal && !name.toLowerCase().includes('tailscale')) {
+            if (iface.family === 'IPv4' && !iface.internal && !name.toLowerCase().includes('tailscale') && !name.toLowerCase().includes('virtual') && !name.toLowerCase().includes('wsl')) {
                 return iface.address;
             }
         }
@@ -78,7 +78,7 @@ let clientCount = 0;
 
 wss.on('connection', (ws) => {
     clientCount++;
-    console.log(`📱 Phone connected to dashboard! (Active clients: ${clientCount})`);
+    console.log(`📱 Device connected to dashboard! (Active clients: ${clientCount})`);
 
     ws.on('close', () => {
         clientCount = Math.max(0, clientCount - 1);
@@ -193,17 +193,17 @@ udpSocket.bind(UDP_PORT, '0.0.0.0', () => {
     console.log(`📡 UDP Telemetry Listening On : 0.0.0.0:${UDP_PORT}`);
     console.log(`📱 Phone Dashboard Web Link   : ${DASHBOARD_URL}`);
     console.log(`----------------------------------------------------------------`);
-    console.log(`\n⚙️  FORZA AYARLARINDA YAPILACAKLAR (HUD VE OYNANIŞ):`);
-    console.log(`   1. Veri Çıkışı (Data Out)        : AÇIK (ON)`);
-    console.log(`   2. Veri Çıkışı IP Adresi         : ${LOCAL_IP} (veya 127.0.0.1)`);
-    console.log(`   3. Veri Çıkışı IP Bağlantı Noktası: ${UDP_PORT}`);
+    console.log(`\n⚙️  FORZA IN-GAME CONFIGURATION (HUD & GAMEPLAY):`);
+    console.log(`   1. Data Out                      : ON`);
+    console.log(`   2. Data Out IP Address           : ${LOCAL_IP} (or 127.0.0.1)`);
+    console.log(`   3. Data Out IP Port              : ${UDP_PORT}`);
     console.log(`================================================================\n`);
 });
 
 server.listen(HTTP_PORT, '0.0.0.0', () => {
     QRCode.toString(DASHBOARD_URL, { type: 'terminal', small: true }, (err, qr) => {
         if (!err) {
-            console.log('📲 Telefon Kamerasından Doğrudan Okutabileceğiniz QR Kod:\n');
+            console.log('📲 Scan this QR code with your mobile camera to open the dashboard:\n');
             console.log(qr);
         }
     });

@@ -47,10 +47,10 @@ document.addEventListener('visibilitychange', () => {
 btnFullscreen.addEventListener('click', () => {
     if (!document.fullscreenElement) {
         document.documentElement.requestFullscreen().catch(() => {});
-        btnFullscreen.textContent = 'ÇIKIŞ';
+        btnFullscreen.textContent = 'EXIT';
     } else {
         document.exitFullscreen().catch(() => {});
-        btnFullscreen.textContent = '⛶ TAM EKRAN';
+        btnFullscreen.textContent = '⛶ FULLSCREEN';
     }
 });
 
@@ -94,10 +94,10 @@ function connectWebSocket() {
 function updateConnectionStatus(online) {
     if (online) {
         connPill.className = 'pill-online';
-        connText.textContent = 'CANLI TELEMETRİ AKTİF';
+        connText.textContent = 'LIVE TELEMETRY ACTIVE';
     } else {
         connPill.className = 'pill-waiting';
-        connText.textContent = isDemoMode ? 'TEST MODU ÇALIŞIYOR' : 'FORZA BEKLENİYOR...';
+        connText.textContent = isDemoMode ? 'DEMO MODE ACTIVE' : 'WAITING FOR FORZA...';
     }
 }
 
@@ -191,7 +191,7 @@ function applyTireTemp(element, temp) {
 // Demo / Test Mode Loop
 btnDemo.addEventListener('click', () => {
     isDemoMode = !isDemoMode;
-    btnDemo.textContent = isDemoMode ? 'TESTİ DURDUR' : '⚡ TEST MODU';
+    btnDemo.textContent = isDemoMode ? 'STOP DEMO' : '⚡ DEMO MODE';
 
     if (isDemoMode) {
         updateConnectionStatus(false);

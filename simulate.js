@@ -262,32 +262,32 @@ function drawDashboardUI() {
     console.log(`\x1b[36m====================================================================\x1b[0m`);
     console.log(`\x1b[1m\x1b[33m 🏎️  FORZA HORIZON TELEMETRY UDP SIMULATOR (60 Hz)\x1b[0m`);
     console.log(`\x1b[36m====================================================================\x1b[0m`);
-    console.log(`📡 Hedef Adres   : \x1b[32m${TARGET_HOST}:${TARGET_PORT}\x1b[0m`);
-    console.log(`📦 Gönderilen Paket: \x1b[35m${state.packetCount}\x1b[0m | Durum: \x1b[33m${state.phase}\x1b[0m`);
+    console.log(`📡 Target Host   : \x1b[32m${TARGET_HOST}:${TARGET_PORT}\x1b[0m`);
+    console.log(`📦 Packets Sent  : \x1b[35m${state.packetCount}\x1b[0m | State: \x1b[33m${state.phase}\x1b[0m`);
     console.log(`--------------------------------------------------------------------`);
-    console.log(` ⚙️  VİTES   : \x1b[1m\x1b[32m[ ${state.gear} ]\x1b[0m  ${shiftWarning}  HIZ: \x1b[1m\x1b[37m${Math.round(state.speed).toString().padStart(3, ' ')} km/h\x1b[0m`);
+    console.log(` ⚙️  GEAR    : \x1b[1m\x1b[32m[ ${state.gear} ]\x1b[0m  ${shiftWarning}  SPEED: \x1b[1m\x1b[37m${Math.round(state.speed).toString().padStart(3, ' ')} km/h\x1b[0m`);
     console.log(` ⚡ RPM     : \x1b[33m${Math.round(state.rpm).toString().padStart(4, ' ')} / ${MAX_RPM}\x1b[0m [${isShiftZone ? '\x1b[31m' : '\x1b[32m'}${rpmBar}\x1b[0m]`);
     console.log(` 💨 TURBO   : \x1b[36m${state.boost.toFixed(1).padStart(4, ' ')} PSI\x1b[0m`);
-    console.log(` 🟢 GAZ     : [${throttleBar}] ${(state.accel * 100).toFixed(0).padStart(3, ' ')}%`);
-    console.log(` 🔴 FREN    : [${brakeBar}] ${(state.brake * 100).toFixed(0).padStart(3, ' ')}%`);
+    console.log(` 🟢 THROTTLE: [${throttleBar}] ${(state.accel * 100).toFixed(0).padStart(3, ' ')}%`);
+    console.log(` 🔴 BRAKE   : [${brakeBar}] ${(state.brake * 100).toFixed(0).padStart(3, ' ')}%`);
     console.log(`--------------------------------------------------------------------`);
-    console.log(` 🛞 LASTİK SICAKLIKLARI:`);
-    console.log(`    ÖN SOL  : ${formatTemp(state.tireTemps[0])}   |   ÖN SAĞ  : ${formatTemp(state.tireTemps[1])}`);
-    console.log(`    ARKA SOL: ${formatTemp(state.tireTemps[2])}   |   ARKA SAĞ: ${formatTemp(state.tireTemps[3])}`);
+    console.log(` 🛞 TIRE TEMPERATURES:`);
+    console.log(`    FRONT LEFT : ${formatTemp(state.tireTemps[0])}   |   FRONT RIGHT: ${formatTemp(state.tireTemps[1])}`);
+    console.log(`    REAR LEFT  : ${formatTemp(state.tireTemps[2])}   |   REAR RIGHT : ${formatTemp(state.tireTemps[3])}`);
     console.log(`--------------------------------------------------------------------`);
-    console.log(`💡 \x1b[90mDurdurmak için Ctrl + C tuşlarına basabilirsiniz.\x1b[0m`);
+    console.log(`💡 \x1b[90mPress Ctrl + C to stop the simulator.\x1b[0m`);
 }
 
 function formatTemp(temp) {
     const t = Math.round(temp);
-    if (t < 75) return `\x1b[36m${t}°C (Soğuk)\x1b[0m`;
-    if (t < 100) return `\x1b[32m${t}°C (Optimum)\x1b[0m`;
-    return `\x1b[31m${t}°C (Sıcak!)\x1b[0m`;
+    if (t < 75) return `\x1b[36m${t}°C (Cold)\x1b[0m`;
+    if (t < 100) return `\x1b[32m${t}°C (Optimal)\x1b[0m`;
+    return `\x1b[31m${t}°C (Hot!)\x1b[0m`;
 }
 
 // 60Hz Simulation Loop
 console.clear();
-console.log(`🚀 Forza Telemetry Simulator başlatılıyor: ${TARGET_HOST}:${TARGET_PORT}...`);
+console.log(`🚀 Starting Forza Telemetry Simulator: ${TARGET_HOST}:${TARGET_PORT}...`);
 
 const loop = setInterval(() => {
     updatePhysics(INTERVAL_MS / 1000);
@@ -295,7 +295,7 @@ const loop = setInterval(() => {
 
     client.send(packet, 0, packet.length, TARGET_PORT, TARGET_HOST, (err) => {
         if (err) {
-            console.error('UDP Gönderim Hatası:', err);
+            console.error('UDP Transmission Error:', err);
         } else {
             state.packetCount++;
         }
@@ -308,6 +308,6 @@ const loop = setInterval(() => {
 process.on('SIGINT', () => {
     clearInterval(loop);
     client.close();
-    console.log(`\n\n🛑 Simülatör durduruldu. Toplam ${state.packetCount} UDP paketi iletildi.`);
+    console.log(`\n\n🛑 Simulator stopped. Broadcasted ${state.packetCount} UDP packets.`);
     process.exit(0);
 });

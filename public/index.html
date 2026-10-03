@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -34,12 +34,12 @@
         <div id="status-bar">
             <div id="conn-pill" class="pill-waiting">
                 <span class="pulse-dot"></span>
-                <span id="conn-text">FORZA BEKLENİYOR...</span>
+                <span id="conn-text">WAITING FOR FORZA...</span>
             </div>
             <div id="car-info">DIGITAL COCKPIT</div>
             <div id="dash-tools">
-                <button id="btn-fullscreen" class="dash-btn" title="Tam Ekran">⛶ TAM EKRAN</button>
-                <button id="btn-demo" class="dash-btn" title="Test Simülasyonu">⚡ TEST MODU</button>
+                <button id="btn-fullscreen" class="dash-btn" title="Fullscreen">⛶ FULLSCREEN</button>
+                <button id="btn-demo" class="dash-btn" title="Demo Mode">⚡ DEMO MODE</button>
             </div>
         </div>
 
@@ -51,19 +51,19 @@
                     <div class="pedal-bar-track">
                         <div id="throttle-fill" class="pedal-fill throttle"></div>
                     </div>
-                    <div class="pedal-label">GAZ</div>
+                    <div class="pedal-label">THROTTLE</div>
                 </div>
                 <div class="pedal-gauge">
                     <div class="pedal-bar-track">
                         <div id="brake-fill" class="pedal-fill brake"></div>
                     </div>
-                    <div class="pedal-label">FREN</div>
+                    <div class="pedal-label">BRAKE</div>
                 </div>
                 <div class="pedal-gauge">
                     <div class="pedal-bar-track">
                         <div id="clutch-fill" class="pedal-fill clutch"></div>
                     </div>
-                    <div class="pedal-label">DEBRİYAJ</div>
+                    <div class="pedal-label">CLUTCH</div>
                 </div>
             </div>
 
@@ -71,7 +71,7 @@
             <div class="center-core">
                 <div class="cluster-inner">
                     <div class="gear-container">
-                        <span class="gear-label">VİTES</span>
+                        <span class="gear-label">GEAR</span>
                         <div id="gear-display" class="gear-num">N</div>
                     </div>
 
@@ -99,22 +99,22 @@
 
                 <!-- 4 Tires Heat Map -->
                 <div class="sub-card tires-card">
-                    <div class="sub-card-title">LASTİK SICAKLIKLARI</div>
+                    <div class="sub-card-title">TIRE TEMPERATURES</div>
                     <div class="tires-grid">
                         <div class="tire" id="tire-fl">
-                            <div class="tire-id">ÖL</div>
+                            <div class="tire-id">FL</div>
                             <div class="tire-temp"><span id="temp-fl">--</span>°C</div>
                         </div>
                         <div class="tire" id="tire-fr">
-                            <div class="tire-id">ÖR</div>
+                            <div class="tire-id">FR</div>
                             <div class="tire-temp"><span id="temp-fr">--</span>°C</div>
                         </div>
                         <div class="tire" id="tire-rl">
-                            <div class="tire-id">AL</div>
+                            <div class="tire-id">RL</div>
                             <div class="tire-temp"><span id="temp-rl">--</span>°C</div>
                         </div>
                         <div class="tire" id="tire-rr">
-                            <div class="tire-id">AR</div>
+                            <div class="tire-id">RR</div>
                             <div class="tire-temp"><span id="temp-rr">--</span>°C</div>
                         </div>
                     </div>
