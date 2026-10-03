@@ -1,73 +1,81 @@
-# 🏎️ Forza Telemetry Dashboard & Digital Cockpit
+# 🏎️ Forza Horizon & Motorsport Telemetry Dashboard
 
-Forza Horizon 4/5 ve Forza Motorsport serisinden **UDP 60Hz** protokolü ile gelen gerçek zamanlı yarış telemetri verilerini okuyan, işleyen ve yerel ağınızdaki herhangi bir telefon, tablet veya tarayıcıda yarış kokpiti gibi gösteren canlı telemetri paneli.
+A real-time, low-latency **60Hz UDP Telemetry Dashboard & Digital Cockpit** designed for **Forza Horizon 4 / 5** and **Forza Motorsport**.
 
----
-
-## ✨ Özellikler
-
-- 🚥 **16 Kademeli F1/GT3 LED Shift Lights:** Motor devrine göre renk değiştiren (Yeşil, Sarı, Kırmızı, Mavi) ve redline sınırında stroboskopik yanıp sönen ışıklar.
-- ⚡ **Hızlı Telemetri Göstergeleri:**
-  - Anlık Dijital Hız (km/h)
-  - Büyük Vites Göstergesi (R / N / 1-6+)
-  - Hassas Devir (RPM)
-  - Gaz, Fren ve Debriyaj basınç barları
-  - Gerçek zamanlı Turbo Boost (PSI)
-  - 4 Teker Bağımsız Lastik Sıcaklıkları (°C Renk Kodlu Isı Haritası)
-- 📳 **Haptik Titreşim:** Vites atma noktasında (Shift Warning) mobil cihazlarda titreşim desteği.
-- 📱 **Ekran Uyanık Tutma (Wake Lock):** Telefon ekranının yarış esnasında otomatik kapanmasını engeller.
-- 🖥️ **Tam Ekran Desteği:** Tek dokunuşla tam ekran yarış kokpiti deneyimi.
-- 🔄 **Dahili 60Hz Simülatör & Test Modu:** Forza oyunu açık olmasa bile panel veya terminal üzerinden tüm sürüş dinamiklerini test etme imkânı.
+It reads raw UDP telemetry data packets transmitted by the game, processes vehicle physics and engine metrics in real-time, and streams them via WebSockets to an ultra-responsive web dashboard optimized for mobile phones, tablets, and secondary monitors.
 
 ---
 
-## 🚀 Hızlı Başlangıç
+## ✨ Features
 
-### 1. Gereksinimler
-- [Node.js](https://nodejs.org/) (v16 veya üzeri)
-- Forza Horizon 4 / 5 veya Forza Motorsport
+- 🚥 **16-Stage F1 / GT3 LED Shift Lights:** Color-coded shift indicator (Green ➔ Amber ➔ Red ➔ Blue) with high-intensity strobe flash at redline.
+- ⚡ **Real-Time Digital Instrument Cluster:**
+  - Precision Digital Speedometer (km/h)
+  - Giant Sequential Gear Display (R / N / 1–6+)
+  - Engine Tachometer (RPM & Redline Warning)
+  - Throttle, Brake, and Clutch input pressure bars
+  - Real-time Turbo Boost gauge (PSI)
+  - **4-Wheel Independent Tire Temperature Heatmap** (°C with dynamic cold/optimal/hot color scaling)
+- 📳 **Haptic Feedback:** Vibrates mobile devices when reaching optimal shift points.
+- 📱 **Screen Wake Lock:** Prevents phone or tablet screens from dimming or locking during races.
+- 🖥️ **Full-Screen Cockpit Mode:** One-tap toggle for an immersive standalone display.
+- 🔄 **Built-in 60Hz Physics Simulator:** Test and demo the entire cockpit without launching the game.
 
-### 2. Kurulum
+---
+
+## 🚀 Quick Start
+
+### 1. Prerequisites
+- [Node.js](https://nodejs.org/) (v16.0.0 or later)
+- Forza Horizon 4 / 5 or Forza Motorsport
+
+### 2. Installation
 ```bash
 git clone https://github.com/emiukob/Forza_Telemetry_Dashboard.git
 cd Forza_Telemetry_Dashboard
 npm install
 ```
 
-### 3. Çalıştırma
+### 3. Launch Server
 ```bash
 npm start
 ```
-> Terminalde oluşturulan **QR kodu** telefonunuzun kamerasıyla okutarak veya gösterilen yerel IP adresine (`http://192.168.x.x:8080`) tarayıcınızdan bağlanabilirsiniz.
+
+> The server will automatically detect your local IP address and print a **QR Code** directly in your terminal. Scan the QR code with your smartphone camera or navigate to `http://<YOUR_LOCAL_IP>:8080` in any web browser.
 
 ---
 
-## ⚙️ Forza Oyun İçi Ayarları
+## ⚙️ In-Game Configuration (Forza)
 
-1. Oyunu açın ve **Ayarlar (Settings) > HUD ve Oynanış (HUD and Gameplay)** menüsüne gidin.
-2. Sayfanın en altına inin:
-   - **Veri Çıkışı (Data Out):** `AÇIK (ON)`
-   - **Veri Çıkışı IP Adresi (Data Out IP Address):** `Bilgisayarınızın Yerel IP Adresi` *(Örn: 192.168.1.x)* veya aynı PC'de ise `127.0.0.1`
-   - **Veri Çıkışı IP Bağlantı Noktası (Data Out IP Port):** `5300`
-3. Ayarları kaydedin ve yarışa başlayın!
+1. Launch **Forza Horizon 4/5** or **Forza Motorsport**.
+2. Navigate to **Settings > HUD and Gameplay**.
+3. Scroll down to the bottom and configure the following:
+   - **Data Out:** `ON`
+   - **Data Out IP Address:** `Your PC's Local IP` *(e.g., 192.168.1.xxx)* or `127.0.0.1` (if running on the same machine)
+   - **Data Out IP Port:** `5300`
+4. Save settings and start driving!
 
 ---
 
-## 🧪 Oyun Olmadan Test Etme (Simülatör)
+## 🧪 Testing Without the Game (Built-in Simulator)
 
-Oyunu açmadan dashboard'u test etmek isterseniz terminalden simülatörü çalıştırabilirsiniz:
+You can run the standalone 60Hz physics telemetry simulator to test and demo the dashboard anytime:
+
 ```bash
 npm run sim
 ```
 
----
-
-## 🛠️ Kullanılan Teknolojiler
-
-- **Backend:** Node.js, `dgram` (UDP Socket 60Hz), `ws` (WebSocket), `http`, `qrcode`
-- **Frontend:** Vanilla HTML5, CSS3, JavaScript (WebSocket Client, Canvas/Animations, WakeLock API, Vibration API)
+This generates realistic telemetry packets (acceleration runs, gear shifts, braking heat buildup, boost curves) and broadcasts them directly to the server.
 
 ---
 
-## 📄 Lisans
-Bu proje [MIT](LICENSE) lisansı ile korunmaktadır.
+## 🛠️ Architecture & Tech Stack
+
+- **Backend:** Node.js, `dgram` (UDP 60Hz Socket), `ws` (WebSocket Server), `http`, `qrcode`
+- **Frontend:** Vanilla HTML5, CSS3 (Hardware-accelerated CSS Animations), JavaScript (WebSocket Client, Screen WakeLock API, Vibration API)
+- **Protocol:** Forza Data Out Dash Format (324-byte UDP structure)
+
+---
+
+## 📄 License
+Distributed under the MIT License. See `LICENSE` for more information.
