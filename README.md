@@ -6,6 +6,12 @@ It reads raw UDP telemetry data packets transmitted by the game, processes vehic
 
 ---
 
+<div align="center">
+  <img src="screenshot.png" alt="Forza Telemetry Dashboard Preview" width="100%" />
+</div>
+
+---
+
 ## ✨ Features
 
 - 🚥 **16-Stage F1 / GT3 LED Shift Lights:** Color-coded shift indicator (Green ➔ Amber ➔ Red ➔ Blue) with high-intensity strobe flash at redline.
