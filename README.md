@@ -1,6 +1,6 @@
-# 🏎️ Forza Horizon & Motorsport Telemetry Dashboard
+# 🏎️ Forza Horizon 4 / 5 / 6 & Motorsport Telemetry Dashboard
 
-A real-time, low-latency **60Hz UDP Telemetry Dashboard & Digital Cockpit** designed for **Forza Horizon 4 / 5** and **Forza Motorsport**.
+A real-time, low-latency **60Hz UDP Telemetry Dashboard & Digital Cockpit** designed for **Forza Horizon 4 / 5 / 6** and **Forza Motorsport** (Next-Gen ready).
 
 It reads raw UDP telemetry data packets transmitted by the game, processes vehicle physics and engine metrics in real-time, and streams them via WebSockets to an ultra-responsive web dashboard optimized for mobile phones, tablets, and secondary monitors.
 
@@ -26,6 +26,7 @@ It reads raw UDP telemetry data packets transmitted by the game, processes vehic
 - 📱 **Screen Wake Lock:** Prevents phone or tablet screens from dimming or locking during races.
 - 🖥️ **Full-Screen Cockpit Mode:** One-tap toggle for an immersive standalone display.
 - 🔄 **Built-in 60Hz Physics Simulator:** Test and demo the entire cockpit without launching the game.
+- 🏁 **Next-Gen Compatible:** Built strictly adhering to the standard Forza Data Out UDP protocol (FH4, FH5, FH6 & FM).
 
 ---
 
@@ -33,7 +34,7 @@ It reads raw UDP telemetry data packets transmitted by the game, processes vehic
 
 ### 1. Prerequisites
 - [Node.js](https://nodejs.org/) (v16.0.0 or later)
-- Forza Horizon 4 / 5 or Forza Motorsport
+- Forza Horizon 4 / 5 / 6 or Forza Motorsport
 
 ### 2. Installation
 ```bash
@@ -53,7 +54,7 @@ npm start
 
 ## ⚙️ In-Game Configuration (Forza)
 
-1. Launch **Forza Horizon 4/5** or **Forza Motorsport**.
+1. Launch **Forza Horizon (4 / 5 / 6)** or **Forza Motorsport**.
 2. Navigate to **Settings > HUD and Gameplay**.
 3. Scroll down to the bottom and configure the following:
    - **Data Out:** `ON`
