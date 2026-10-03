@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#000000">
+    <title>FORZA HORIZON TELEMETRY DASHBOARD // DIGITAL COCKPIT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="dashboard-container">
+        <!-- Top F1 / GT3 Shift Lights -->
+        <div id="shift-lights-bar">
+            <!-- 16 LED Segments: 4 Green, 4 Amber, 4 Red, 4 Blue -->
+            <div class="led led-green" data-index="0"></div>
+            <div class="led led-green" data-index="1"></div>
+            <div class="led led-green" data-index="2"></div>
+            <div class="led led-green" data-index="3"></div>
+            <div class="led led-amber" data-index="4"></div>
+            <div class="led led-amber" data-index="5"></div>
+            <div class="led led-amber" data-index="6"></div>
+            <div class="led led-amber" data-index="7"></div>
+            <div class="led led-red" data-index="8"></div>
+            <div class="led led-red" data-index="9"></div>
+            <div class="led led-red" data-index="10"></div>
+            <div class="led led-red" data-index="11"></div>
+            <div class="led led-blue" data-index="12"></div>
+            <div class="led led-blue" data-index="13"></div>
+            <div class="led led-blue" data-index="14"></div>
+            <div class="led led-blue" data-index="15"></div>
+        </div>
+
+        <!-- Top Telemetry Status Line -->
+        <div id="status-bar">
+            <div id="conn-pill" class="pill-waiting">
+                <span class="pulse-dot"></span>
+                <span id="conn-text">FORZA BEKLENİYOR...</span>
+            </div>
+            <div id="car-info">DIGITAL COCKPIT</div>
+            <div id="dash-tools">
+                <button id="btn-fullscreen" class="dash-btn" title="Tam Ekran">⛶ TAM EKRAN</button>
+                <button id="btn-demo" class="dash-btn" title="Test Simülasyonu">⚡ TEST MODU</button>
+            </div>
+        </div>
+
+        <!-- Main Cockpit Cluster -->
+        <div id="main-cluster">
+            <!-- Left Wing: Pedals & Clutch -->
+            <div class="wing left-wing">
+                <div class="pedal-gauge">
+                    <div class="pedal-bar-track">
+                        <div id="throttle-fill" class="pedal-fill throttle"></div>
+                    </div>
+                    <div class="pedal-label">GAZ</div>
+                </div>
+                <div class="pedal-gauge">
+                    <div class="pedal-bar-track">
+                        <div id="brake-fill" class="pedal-fill brake"></div>
+                    </div>
+                    <div class="pedal-label">FREN</div>
+                </div>
+                <div class="pedal-gauge">
+                    <div class="pedal-bar-track">
+                        <div id="clutch-fill" class="pedal-fill clutch"></div>
+                    </div>
+                    <div class="pedal-label">DEBRİYAJ</div>
+                </div>
+            </div>
+
+            <!-- Center Core: Big Speed, Giant Gear & Digital RPM -->
+            <div class="center-core">
+                <div class="cluster-inner">
+                    <div class="gear-container">
+                        <span class="gear-label">VİTES</span>
+                        <div id="gear-display" class="gear-num">N</div>
+                    </div>
+
+                    <div class="speed-container">
+                        <div id="speed-display" class="speed-num">0</div>
+                        <div class="speed-unit">KM/H</div>
+                    </div>
+
+                    <div class="rpm-digital">
+                        <span id="rpm-display">0</span> <span class="rpm-unit">RPM</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Wing: Boost & 4-Tire Temperatures -->
+            <div class="wing right-wing">
+                <!-- Turbo Boost -->
+                <div class="sub-card boost-card">
+                    <div class="sub-card-title">TURBO BOOST</div>
+                    <div class="boost-val"><span id="boost-display">0.0</span> <span class="sub-unit">PSI</span></div>
+                    <div class="boost-track">
+                        <div id="boost-fill" class="boost-fill"></div>
+                    </div>
+                </div>
+
+                <!-- 4 Tires Heat Map -->
+                <div class="sub-card tires-card">
+                    <div class="sub-card-title">LASTİK SICAKLIKLARI</div>
+                    <div class="tires-grid">
+                        <div class="tire" id="tire-fl">
+                            <div class="tire-id">ÖL</div>
+                            <div class="tire-temp"><span id="temp-fl">--</span>°C</div>
+                        </div>
+                        <div class="tire" id="tire-fr">
+                            <div class="tire-id">ÖR</div>
+                            <div class="tire-temp"><span id="temp-fr">--</span>°C</div>
+                        </div>
+                        <div class="tire" id="tire-rl">
+                            <div class="tire-id">AL</div>
+                            <div class="tire-temp"><span id="temp-rl">--</span>°C</div>
+                        </div>
+                        <div class="tire" id="tire-rr">
+                            <div class="tire-id">AR</div>
+                            <div class="tire-temp"><span id="temp-rr">--</span>°C</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Shift Point Warning Banner -->
+        <div id="shift-banner" class="hidden">SHIFT UP!</div>
+    </div>
+
+    <!-- Script -->
+    <script src="app.js"></script>
+</body>
+</html>
