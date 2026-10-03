@@ -52,11 +52,11 @@ npm start
 
 ### 🎮 Step 3: Configure Forza Horizon 6 In-Game
 1. Launch **Forza Horizon 6** on your PC or Xbox.
-2. Go to: **Settings ➔ HUD and Gameplay** (Ayarlar ➔ HUD ve Oynanış).
+2. Go to: **Settings ➔ HUD and Gameplay**.
 3. Scroll down to the very bottom:
-   - **Data Out (Veri Çıkışı):** Set to `ON` (AÇIK)
-   - **Data Out IP Address (IP Adresi):** Enter your PC's IP address shown in the terminal *(e.g. `192.168.1.xxx` or `127.0.0.1` if playing on the same PC)*
-   - **Data Out IP Port (Port):** `5300`
+   - **Data Out:** Set to `ON`
+   - **Data Out IP Address:** Enter your PC's IP address shown in the terminal *(e.g. `192.168.1.xxx` or `127.0.0.1` if playing on the same PC)*
+   - **Data Out IP Port:** `5300`
 4. Save settings and start driving — **your phone will instantly light up and display real-time telemetry!** 🏎️💨
 
 ---
