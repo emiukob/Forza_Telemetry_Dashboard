@@ -42,11 +42,14 @@ npm start
 
 ---
 
-### 📱 Step 2: Open the Dashboard on your Phone
-1. Ensure your phone and PC are connected to the **same Wi-Fi network**.
-2. Look at your PC terminal — it will display a **QR code** and a local web link (e.g. `http://192.168.1.xxx:8080`).
-3. **Open your phone's camera, scan the QR code**, and tap the link to open the dashboard!
-4. Tap **"⛶ FULLSCREEN"** on your phone screen.
+### 📱 Step 2: Setup on your Phone (No App Installation Required!)
+1. **Connect to Wi-Fi:** Make sure your phone/tablet is connected to the **same Wi-Fi router / local network** as your PC.
+2. **Scan the QR Code:** Open your phone's default camera app, point it at the QR code in your PC terminal, and tap the notification link *(or manually type `http://<YOUR_PC_IP>:8080` in Chrome/Safari)*.
+3. **Rotate to Landscape:** Turn your phone horizontally (Landscape orientation) for the best cockpit view.
+4. **Enter Fullscreen Mode:** Tap the **"⛶ FULLSCREEN"** button in the top-right corner (or double-tap anywhere on the screen) to remove browser address bars.
+5. **Mount & Race:** Place your phone on a steering wheel phone mount, desk stand, or under your monitor. 
+   - 💡 *Screen Wake Lock automatically keeps your display awake throughout the race.*
+   - 📳 *Your phone will automatically vibrate to alert you when to shift gears!*
 
 ---
 
